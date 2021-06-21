@@ -13,6 +13,7 @@ COPY Dockerfile /home/rstudio/Dockerfile
 
 RUN apt-get update && apt-get install -y \
     python3-pip
+RUN pip3 install numpy pandas scikit-learn matplotlib seaborn lifelines
 RUN install2.r tidymodels renv reticulate
 RUN ln -s /usr/local/lib/R/site-library/littler/examples/update.r \
     /usr/local/bin/update.r
