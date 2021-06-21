@@ -11,6 +11,10 @@ MAINTAINER JK
 COPY Makefile /home/rstudio/Makefile
 COPY Dockerfile /home/rstudio/Dockerfile
 
+RUN echo '' >> /home/rstudio/requirements.txt
+RUN apt-get update && apt-get install -y \
+    python3-pip
+RUN pip3 install -r /home/rstudio/requirements.txt
 RUN install2.r tidymodels renv reticulate
 RUN ln -s /usr/local/lib/R/site-library/littler/examples/update.r \
     /usr/local/bin/update.r
